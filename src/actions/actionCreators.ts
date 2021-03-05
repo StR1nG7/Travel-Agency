@@ -23,20 +23,17 @@ export const setTours = (toursData: IToursData): ISetToursAction => ({
 
 export const getToursThunkCreator = ( currentData = {} ) => {
 	return (dispatch: Dispatch<ISetToursAction> ) => {
-		// fetch('http://localhost:4000/tours', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json; charset=utf-8',
-		// 	},
-		// 	body: JSON.stringify({page: 1, size: TOURS_PER_PAGE, ...currentData})
-		// })
-		// 		.then(res => res.json() as Promise<IToursData>)
-		// 		.then(data => dispatch(setTours(data)));
 
-		axios.post('http://localhost:4000/tours', {
+		const _payload = {
 			page: 1,
 			size: TOURS_PER_PAGE,
 			...currentData
+		};
+
+		axios.get('http://localhost:4000/tours', {
+			params: {
+				data: JSON.stringify(_payload)
+			}
 		}).then( res => {
 			dispatch(setTours(res.data));
 		} );
