@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "title": "Sharm El Sheikh",
+    "from": ["Kyiv", "Odesa"],
+    "destination": "Egypt",
+    "period": 7,
+    "persons": 2,
+    "hotels": [3, 4],
+    "price": 3000
+  },
+  {
+    "id": 2,
+    "title": "Hurghada",
+    "from": ["Kyiv", "Lviv"],
+    "destination": "Egypt",
+    "period": 10,
+    "persons": 2,
+    "hotels": [4, 5],
+    "price": 4000
+  },
+  {
+    "id": 3,
+    "title": "Alexandria",
+    "from": ["Kyiv"],
+    "destination": "Egypt",
+    "period": 3,
+    "persons": 3,
+    "hotels": [4, 5],
+    "price": 2000
+  },
+  {
+    "id": 4,
+    "title": "Istanbul",
+    "from": ["Odesa"],
+    "destination": "Turkey",
+    "period": 10,
+    "persons": 4,
+    "hotels": [4, 5],
+    "price": 8000
+  },
+  {
+    "id": 5,
+    "title": "Antalya",
+    "from": ["Kyiv"],
+    "destination": "Turkey",
+    "period": 7,
+    "persons": 2,
+    "hotels": [3, 4],
+    "price": 5000
+  },
+  {
+    "id": 6,
+    "title": "Bodrum",
+    "from": ["Lviv"],
+    "destination": "Turkey",
+    "period": 3,
+    "persons": 2,
+    "hotels": [3],
+    "price": 5500
+  },
+  {
+    "id": 7,
+    "title": "Alanya",
+    "from": ["Lviv", "Odesa"],
+    "destination": "Turkey",
+    "period": 7,
+    "persons": 2,
+    "hotels": [4, 5],
+    "price": 6000
+  },
+  {
+    "id": 8,
+    "title": "Kemer",
+    "from": ["Kyiv", "Lviv"],
+    "destination": "Turkey",
+    "period": 10,
+    "persons": 3,
+    "hotels": [4, 5],
+    "price": 7000
+  },
+  {
+    "id": 9,
+    "title": "Bali",
+    "from": ["Kyiv", "Lviv", "Odesa"],
+    "destination": "Indonesia",
+    "period": 10,
+    "persons": 2,
+    "hotels": [5],
+    "price": 9000
+  },
+  {
+    "id": 10,
+    "title": "Belek",
+    "from": ["Kyiv"],
+    "destination": "Turkey",
+    "period": 7,
+    "persons": 2,
+    "hotels": [4, 5],
+    "price": 3000
+  },
+  {
+    "id": 11,
+    "title": "Sumatra",
+    "from": ["Kyiv", "Lviv"],
+    "destination": "Indonesia",
+    "period": 10,
+    "persons": 2,
+    "hotels": [5],
+    "price": 10000
+  },
+  {
+    "id": 12,
+    "title": "Marsa Alam",
+    "from": ["Kyiv", "Odesa"],
+    "destination": "Egypt",
+    "period": 7,
+    "persons": 2,
+    "hotels": [3, 4],
+    "price": 4200
+  },
+  {
+    "id": 13,
+    "title": "Dahab",
+    "from": ["Kyiv"],
+    "destination": "Egypt",
+    "period": 7,
+    "persons": 2,
+    "hotels": [4],
+    "price": 4500
+  },
+  {
+    "id": 14,
+    "title": "Side",
+    "from": ["Lviv"],
+    "destination": "Turkey",
+    "period": 7,
+    "persons": 2,
+    "hotels": [4, 5],
+    "price": 3700
+  },
+  {
+    "id": 15,
+    "title": "Bogor",
+    "from": ["Lviv"],
+    "destination": "Indonesia",
+    "period": 10,
+    "persons": 4,
+    "hotels": [5],
+    "price": 10500
+  },
+  {
+    "id": 16,
+    "title": "Bandung",
+    "from": ["Odesa"],
+    "destination": "Indonesia",
+    "period": 7,
+    "persons": 2,
+    "hotels": [4, 5],
+    "price": 7000
+  },
+  {
+    "id": 17,
+    "title": "Safaga",
+    "from": ["Odesa"],
+    "destination": "Egypt",
+    "period": 7,
+    "persons": 3,
+    "hotels": [3, 4],
+    "price": 3800
+  }
+]

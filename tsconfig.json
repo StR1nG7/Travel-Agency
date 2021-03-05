@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "ES5",
+    "strict": true,
+    "module": "esnext",
+    "jsx": "react",
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "from": [
+    {
+      "value": "All",
+      "label": "All cities"
+    },
+    {
+      "value": "Kyiv",
+      "label": "Kyiv"
+    },
+    {
+      "value": "Lviv",
+      "label": "Lviv"
+    },
+    {
+      "value": "Odesa",
+      "label": "Odesa"
+    }
+  ],
+  "destination": [
+    {
+      "value": "All",
+      "label": "All destinations"
+    },
+    {
+      "value": "Egypt",
+      "label": "Egypt"
+    },
+    {
+      "value": "Indonesia",
+      "label": "Indonesia"
+    },
+    {
+      "value": "Turkey",
+      "label": "Turkey"
+    }
+  ],
+  "period": [
+    {
+      "value": "All",
+      "label": "All periods"
+    },
+    {
+      "value": "3",
+      "label": "3 days"
+    },
+    {
+      "value": "7",
+      "label": "7 days"
+    },
+    {
+      "value": "10",
+      "label": "10 days"
+    }
+  ],
+  "persons": [
+    {
+      "value": "All",
+      "label": "Any count"
+    },
+    {
+      "value": "2",
+      "label": "2 pers"
+    },
+    {
+      "value": "3",
+      "label": "3 pers"
+    },
+    {
+      "value": "4",
+      "label": "4 pers"
+    }
+  ],
+  "hotels": [
+    {
+      "value": "All",
+      "label": "All hotels"
+    },
+    {
+      "value": "3",
+      "label": "3 stars"
+    },
+    {
+      "value": "4",
+      "label": "4 stars"
+    },
+    {
+      "value": "5",
+      "label": "5 stars"
+    }
+  ]
+}
