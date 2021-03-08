@@ -21,21 +21,50 @@ export const setTours = (toursData: IToursData): ISetToursAction => ({
 	toursData
 });
 
-export const getToursThunkCreator = ( currentData = {} ) => {
+interface ICurrentData {
+	page?: number,
+	size?: number,
+	currentFilters?: {[key: string]: any}
+}
+
+export const getToursThunkCreator = ( currentData: ICurrentData = {}) => {
 	return (dispatch: Dispatch<ISetToursAction> ) => {
 
-		const _payload = {
-			page: 1,
-			size: TOURS_PER_PAGE,
-			...currentData
-		};
+		let currentFiltersFragment;
+		if (currentData.currentFilters) {
+			const _currentFilters = currentData.currentFilters;
+			const properties: Array<string> = [];
+			const keys = Object.keys(_currentFilters);
+			keys.forEach(function(key){
+				if (_currentFilters[key]) {
+					properties.push(key + ': "' + _currentFilters[key] + '"');
+				}
+			});
+			currentFiltersFragment = ", currentFilters: {" + properties.join(', ') + "}";
+		}
 
-		axios.get('http://localhost:4000/tours', {
-			params: {
-				data: JSON.stringify(_payload)
-			}
+		axios.post('http://localhost:4000/graphql', {
+			query: `
+				query {
+					getTours( page: ${currentData.page || 1}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment ? currentFiltersFragment : ''} ) {
+						count, 
+						tours {
+							id,
+							title,
+							from,
+							destination,
+							persons,
+							period,
+							hotels,
+							price
+						},
+						minPrice,
+						maxPrice
+					}
+				}
+			`
 		}).then( res => {
-			dispatch(setTours(res.data));
+			dispatch(setTours(res.data.data.getTours));
 		} );
 	}
 };
@@ -70,9 +99,26 @@ export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction> ) =>
 	// 		.then(res => res.json() as Promise<IFilterData>)
 	// 		.then(data => dispatch(setFilterData(data)));
 
-	axios.get('http://localhost:4000/filterdata')
-			.then( res => {
-	  dispatch(setFilterData(res.data));
+	// axios.get('http://localhost:4000/filterdata')
+	// 		.then( res => {
+	//   dispatch(setFilterData(res.data));
+	// } );
+	const fragment = '{value, label}';
+
+	axios.post('http://localhost:4000/graphql', {
+		query: `
+				query {
+					getFilterData {
+						from ${fragment},
+						destination ${fragment},
+						period ${fragment},
+						persons ${fragment},
+						hotels ${fragment}
+					}
+				}
+			`
+	}).then( res => {
+		dispatch(setFilterData(res.data.data.getFilterData));
 	} );
 };
 /* end filter options */
