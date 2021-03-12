@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
-import toursPage from './tours';
+import toursPage from './toursPage';
 import { filterOptions } from './filterOptions';
+import singleTourPage from './singleTourPage';
 
-const rootReducer = combineReducers({ toursPage, filterOptions });
+const rootReducer = combineReducers({ toursPage, filterOptions, singleTourPage });
 
 export default rootReducer;
 

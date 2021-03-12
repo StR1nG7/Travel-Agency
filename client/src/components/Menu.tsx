@@ -9,6 +9,10 @@ const menu = [
     url: '/',
   },
   {
+    name: 'Tours',
+    url: '/tours',
+  },
+  {
     name: 'Destinations',
     url: '/destinations.html',
   },

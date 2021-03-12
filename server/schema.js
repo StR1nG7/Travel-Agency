@@ -10,7 +10,16 @@ const schema = buildSchema(`
     period: Int,
     persons: Int,
     hotels: [String],
-    price: Int
+    price: Int,
+    description: String,
+		details: String,
+		priceIncluded: [String],
+		schedule: [Day]
+	}
+	type Day {
+		day: Int,
+		title: String,
+		description: String,
 	}
 	type TourData {
 		count: Int,
@@ -39,7 +48,8 @@ const schema = buildSchema(`
 	}
 	type Query {
 		getTours(page: Int, size: Int, currentFilters: CurrentFilters): TourData,
-		getFilterData: FilterData
+		getFilterData: FilterData,
+		getTour(id: String): Tour
 	}
 `);
 

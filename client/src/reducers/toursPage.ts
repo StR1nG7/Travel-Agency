@@ -3,17 +3,6 @@ import {
 } from '../actions/actionCreators';
 import { SET_TOURS, SET_CURRENT_PAGE, SET_CURRENT_FILTER } from '../constants';
 
-export interface ITour {
-	id: string,
-	title: string,
-	from: Array<string>,
-	destination: string,
-	period: number,
-	persons: number,
-	hotels: Array<string>,
-	price: number
-}
-
 export interface IToursPageReducer extends IToursData {
 	currentPage: number,
 	currentFilters: object

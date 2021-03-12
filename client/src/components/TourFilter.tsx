@@ -11,7 +11,7 @@ import {
   setCurrentPage,
 } from '../actions/actionCreators';
 import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/tours';
+import { IToursPageReducer } from '../reducers/toursPage';
 import { flex } from '../utils/styled-components';
 
 export type TOptionOrNull = IOption | null;

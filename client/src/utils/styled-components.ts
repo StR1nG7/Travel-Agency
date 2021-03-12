@@ -42,6 +42,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   h2{font-size:1.8125em;font-weight:700}
+  h3{font-size:1.625em;font-weight:600}
   h4{font-size:1.25em;font-weight:600}
   h5{font-size:1.125em;font-weight:600}
   h4,h5{

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TOURS_PER_PAGE } from '../constants';
 import { getToursThunkCreator, setCurrentPage } from '../actions/actionCreators';
 import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/tours';
+import { IToursPageReducer } from '../reducers/toursPage';
 import PaginationItem from '../components/PaginationItem';
 import { flex } from '../utils/styled-components';
 

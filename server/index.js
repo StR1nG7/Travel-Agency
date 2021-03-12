@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs');
 const { graphqlHTTP } = require('express-graphql');
 const cors = require('cors');
 const schema = require('./schema');
@@ -29,7 +28,6 @@ tours.forEach((item, index) => {
 
 const root = {
 	getTours: ({ page, size, currentFilters }) => {
-		console.log(currentFilters);
 		let resultTours;
 		// if currentFilters isn't null/undefined AND isn't empty object start filter tours
 		if (currentFilters && Object.keys(currentFilters).length !== 0) {
@@ -77,6 +75,7 @@ const root = {
 		return data;
 	},
 	getFilterData: () => filterData,
+	getTour: ({ id }) => tours.find((item) => item.id === +id),
 };
 
 app.use('/graphql', graphqlHTTP({

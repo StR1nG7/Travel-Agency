@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { ITour } from '../reducers/tours';
 import { flex } from '../utils/styled-components';
 import ImageWithWebp from './ImageWithWebp';
+import { ITour } from '../actions/actionCreators';
 
 const Tour: React.FC<ITour> = (
     {
@@ -19,12 +19,14 @@ const Tour: React.FC<ITour> = (
 ) => {
   const starsGroups: Array<ReactElement> = [];
   const stars: Array<Array<ReactElement>> = [];
-  for (let i = 0; i < hotels.length; i++) {
-    stars[i] = [];
-    for (let j = 1; j <= +hotels[i]; j++) {
-      stars[i].push(<i className="mdi mdi-star" key={j} />);
+  if (hotels) {
+    for (let i = 0; i < hotels.length; i++) {
+      stars[i] = [];
+      for (let j = 1; j <= +hotels[i]; j++) {
+        stars[i].push(<i className="mdi mdi-star" key={j} />);
+      }
+      starsGroups.push(<div key={i}>{stars[i]}</div>);
     }
-    starsGroups.push(<div key={i}>{stars[i]}</div>);
   }
 
   const replacedTitle = title.replace(/ /g, '');
@@ -51,11 +53,13 @@ const Tour: React.FC<ITour> = (
         </div>
         <STourCaption>
           <STourTitleWrapper>
-            <h4 style={{ marginRight: 25, marginBottom: 0, lineHeight: 1.2 }}>{title}</h4>
+            <h4 style={{ marginRight: 25, marginBottom: 0, lineHeight: 1.2 }}>
+              <STourTitle to={`/tours/${id}`}>{title}</STourTitle>
+            </h4>
             <STourLocation>{destination}</STourLocation>
             <div style={{ fontSize: '0.9375em' }}>
-              From:
-              {from.join(', ')}
+              {'From: '}
+              {from && from.join(', ')}
             </div>
             <div style={{ fontSize: '0.9375em' }}>
               {persons}
@@ -115,6 +119,10 @@ const STourCaption = styled.div`
 
 const STourTitleWrapper = styled.div`
 	${flex({ direction: 'column', align: 'flex-start' })}
+`;
+
+const STourTitle = styled(Link)`
+	color: #222831;
 `;
 
 const STourPrice = styled.div`

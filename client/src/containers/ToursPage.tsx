@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TourFilter from '../components/TourFilter';
 import Tour from '../components/Tour';
-import { getToursThunkCreator } from '../actions/actionCreators';
+import { getToursThunkCreator, ITour } from '../actions/actionCreators';
 import { TRootState } from '../reducers';
-import { ITour, IToursPageReducer } from '../reducers/tours';
+import { IToursPageReducer } from '../reducers/toursPage';
 import { TOURS_PER_PAGE } from '../constants';
 import Pagination from './Pagination';
 

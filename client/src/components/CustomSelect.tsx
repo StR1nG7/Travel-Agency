@@ -3,10 +3,10 @@ import Select from 'react-select';
 import { useDispatch, useSelector } from 'react-redux';
 import { TOptionOrNull } from './TourFilter';
 import {
-	getToursThunkCreator, IFilterData, IOption, setCurrentFilter, setCurrentPage
+	getToursThunkCreator, IFilterData, IOption, setCurrentFilter, setCurrentPage,
 } from '../actions/actionCreators';
 import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/tours';
+import { IToursPageReducer } from '../reducers/toursPage';
 
 interface ICustomSelectProps {
 	id: string,
@@ -56,6 +56,7 @@ const CustomSelect: React.FC<ICustomSelectProps> = React.memo(({
       placeholder={(
         <>
           <i className={`mdi ${icons[id as keyof IFilterData]} `} />
+          {' '}
           <span>{id}</span>
         </>
       )}
