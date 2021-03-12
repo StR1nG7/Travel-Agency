@@ -38,7 +38,10 @@ const CustomSelect: React.FC<ICustomSelectProps> = React.memo(({
 		setFieldValue(id, option);
 		dispatch(setCurrentFilter({ [id]: option?.value }));
 		dispatch(setCurrentPage(1));
-		dispatch(getToursThunkCreator({ currentFilters: { ...currentFilters, [id]: option?.value } }));
+		dispatch(getToursThunkCreator({
+			page: 1,
+			currentFilters: { ...currentFilters, [id]: option?.value },
+		}));
 	};
 	const handleBlur = () => {
 		setFieldTouched(id, true);

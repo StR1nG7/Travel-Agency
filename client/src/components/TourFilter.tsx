@@ -27,6 +27,8 @@ export interface formValues {
 
 const TourFilter: React.FC = () => {
   const filterOptions: IFilterData = useSelector((state: TRootState) => state.filterOptions);
+  const currentPage = useSelector((state: TRootState) => (state.toursPage as
+      IToursPageReducer).currentPage);
   const currentFilters = useSelector((state: TRootState) => (state.toursPage as
       IToursPageReducer).currentFilters);
   const minPrice = useSelector((state: TRootState) => (state.toursPage as
@@ -66,6 +68,28 @@ const TourFilter: React.FC = () => {
               let key: keyof IFilterData;
               // eslint-disable-next-line guard-for-in,no-restricted-syntax
               for (key in filterOptions) {
+                let value;
+                if (values[key]) {
+                  value = values[key];
+                } else {
+                  /*
+                    Else-block is for case when user selected filters on Tours page with all tours,
+                    after that went to Single Tour page with one tour,
+                    and after that click Back history in browser to Tours page with
+                    selected filters.
+                    In this case, values[key] is null (Formik initial value), and
+                    is not selected value.
+                    So, I get selected value from store (state.toursPage.currentFilters) and
+                    set as value for CustomSelect component.
+                  */
+
+                  // @ts-ignore
+                  const optionValue = currentFilters[key]; // for example, "Kyiv", "Egypt".
+                  const options = filterOptions[key];
+                  value = optionValue
+                      && options.find((currentItem) => currentItem.value === optionValue);
+                }
+
                 selectComponents.push(
                   <CustomSelect
                     key={key}
@@ -73,9 +97,20 @@ const TourFilter: React.FC = () => {
                     setFieldValue={setFieldValue}
                     setFieldTouched={setFieldTouched}
                     options={filterOptions[key]}
-                    value={values[key]}
+                    value={value}
                   />,
                 );
+              }
+
+              let selectedPrice;
+              if (values.price) {
+                selectedPrice = values.price;
+                // @ts-ignore
+              } else if (currentFilters.price) {
+                // @ts-ignore
+                selectedPrice = currentFilters.price;
+              } else {
+                selectedPrice = maxPrice;
               }
 
               return (
@@ -88,7 +123,7 @@ const TourFilter: React.FC = () => {
                       <span>{minPrice}</span>
                       <span style={{ position: 'relative', left: -22 }}>
                         Max. price, $:
-                        <span style={{ position: 'absolute', width: 43, left: 'calc(100% + 3px)' }}>{values.price ? values.price : maxPrice}</span>
+                        <span style={{ position: 'absolute', width: 43, left: 'calc(100% + 3px)' }}>{selectedPrice}</span>
                       </span>
                       <span>{maxPrice}</span>
                     </STourFilterTitle>
@@ -98,7 +133,7 @@ const TourFilter: React.FC = () => {
                       min={minPrice}
                       max={maxPrice}
                       step="100"
-                      value={values.price ? values.price : maxPrice}
+                      value={selectedPrice}
                       onChange={(e: React.KeyboardEvent<HTMLInputElement>) => {
                                handleChange(e); // Formik handleChange
                                const val = e.currentTarget.value;
@@ -106,6 +141,7 @@ const TourFilter: React.FC = () => {
                                  dispatch(setCurrentFilter({ price: val }));
                                  dispatch(setCurrentPage(1));
                                  dispatch(getToursThunkCreator({
+                                   page: 1,
                                    currentFilters: { ...currentFilters, price: val },
                                  }));
                                }

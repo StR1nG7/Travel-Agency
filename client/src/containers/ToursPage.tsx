@@ -9,13 +9,15 @@ import { TOURS_PER_PAGE } from '../constants';
 import Pagination from './Pagination';
 
 const ToursPage:React.FC = () => {
-  const tours = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).tours as Array<ITour>);
-  const count = useSelector((state: TRootState) => (state.toursPage as IToursPageReducer).count);
+  const toursPageState = useSelector((state: TRootState) => (state.toursPage as IToursPageReducer));
+  const tours = toursPageState.tours as Array<ITour>;
+  const count = toursPageState.count;
+  const currentPage = toursPageState.currentPage;
+  const currentFilters = toursPageState.currentFilters;
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getToursThunkCreator());
+    dispatch(getToursThunkCreator({ page: currentPage, currentFilters }));
   }, []);
 
   return (

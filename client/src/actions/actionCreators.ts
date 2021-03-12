@@ -52,22 +52,25 @@ interface ICurrentData {
 export const getToursThunkCreator = (currentData: ICurrentData = {}) => (
 	(dispatch: Dispatch<ISetToursAction>) => {
 		let currentFiltersFragment;
+
 		if (currentData.currentFilters) {
 			const currentFilters = currentData.currentFilters;
-			const properties: Array<string> = [];
 			const keys = Object.keys(currentFilters);
-			keys.forEach((key) => {
-				if (currentFilters[key]) {
-					properties.push(`${key}: "${currentFilters[key]}"`);
-				}
-			});
-			currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
+			if (keys[0]) {
+				const properties: Array<string> = [];
+				keys.forEach((key) => {
+					if (currentFilters[key]) {
+						properties.push(`${key}: "${currentFilters[key]}"`);
+					}
+				});
+				currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
+			}
 		}
 
 		axios.post('http://localhost:4000/graphql', {
 			query:
 				`query {
-					getTours( page: ${currentData.page || 1}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {
+					getTours( page: ${currentData.page}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {
 						count, 
 						tours {
 							id,
