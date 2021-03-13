@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import { flex } from '../utils/styled-components';
 
 const menu = [
@@ -21,22 +21,23 @@ const menu = [
   },
 ];
 
-const Menu: React.FC = () => (
-  <nav className="navigation">
-    <SMenuWrapper>
-      {
-        menu.map((item) => (
-          <li key={item.name}>
-            <SLink to={item.url} exact={item.exact}>{item.name}</SLink>
-          </li>
-        ))
-      }
-      {/* <li className="menu__item"> */}
-      {/*	<Link to="/" className="menu__link menu__link--active">Home</Link> */}
-      {/* </li> */}
-    </SMenuWrapper>
-  </nav>
-);
+const Menu: React.FC = () => {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <nav style={{ borderTop: `1px solid ${theme.grey2}` }}>
+      <SMenuWrapper>
+        {
+          menu.map((item) => (
+            <li key={item.name}>
+              <SLink to={item.url} exact={item.exact}>{item.name}</SLink>
+            </li>
+          ))
+        }
+      </SMenuWrapper>
+    </nav>
+  );
+};
 
 const SMenuWrapper = styled.ul`
 	${flex({ justify: 'center' })};

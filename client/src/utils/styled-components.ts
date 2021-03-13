@@ -55,13 +55,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   main {
-    padding: 50px 0;
-    @media (min-width: 576px){
-      padding: 60px 0;
-    }
-    @media (min-width: 992px){
-      padding: 80px 0;
-    }
+    padding: 30px 0;
   }
   @media (max-width: 575px){
     .container{

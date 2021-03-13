@@ -2,7 +2,6 @@ import React, { Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Header from '../components/Header';
-import TitlePanel from '../components/TitlePanel';
 import { GlobalStyle, theme } from '../utils/styled-components';
 
 const HomePage = React.lazy(() => import('./HomePage'));
@@ -13,7 +12,6 @@ const App:React.FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <Header />
-    <TitlePanel />
 
     <main>
       <div className="container">
