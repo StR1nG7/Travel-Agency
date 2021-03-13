@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { flex } from '../utils/styled-components';
 
@@ -7,14 +7,17 @@ const menu = [
   {
     name: 'Home',
     url: '/',
+    exact: true,
   },
   {
     name: 'Tours',
     url: '/tours',
+    exact: true,
   },
   {
     name: 'Destinations',
     url: '/destinations.html',
+    exact: false,
   },
 ];
 
@@ -24,7 +27,7 @@ const Menu: React.FC = () => (
       {
         menu.map((item) => (
           <li key={item.name}>
-            <SLink to={item.url}>{item.name}</SLink>
+            <SLink to={item.url} exact={item.exact}>{item.name}</SLink>
           </li>
         ))
       }
@@ -43,7 +46,7 @@ const SMenuWrapper = styled.ul`
 	}
 `;
 
-const SLink = styled(Link)`
+const SLink = styled(NavLink)`
   position:relative;
 	display:block;
 	font-size:1em;
@@ -56,6 +59,9 @@ const SLink = styled(Link)`
 	}
 	:hover, :focus {
 		color: ${(props) => props.theme.blue2};
+	}
+	&.active {
+	  color: ${(props) => props.theme.blue2};
 	}
 `;
 
