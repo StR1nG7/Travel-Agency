@@ -14,11 +14,6 @@ const menu = [
     url: '/tours',
     exact: true,
   },
-  {
-    name: 'Destinations',
-    url: '/destinations.html',
-    exact: false,
-  },
 ];
 
 const Menu: React.FC = () => {
