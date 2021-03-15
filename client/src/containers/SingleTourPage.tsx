@@ -6,6 +6,7 @@ import { TRootState } from '../reducers';
 import TourSchedule from '../components/TourSchedule';
 import TourTable from '../components/TourTable';
 import TourCaption from '../components/TourCaption';
+import ImageWithWebp from "../components/ImageWithWebp";
 
 interface ParamsTypes {
   id: string
@@ -25,7 +26,12 @@ const SingleTourPage: React.FC = () => {
   if (tour.title) {
     return (
       <div className="col-12">
-        <img src={`/public/img/${replacedTitle}-lg.jpg`} style={{ marginBottom: 30 }} alt="Tour" />
+        <ImageWithWebp
+          srcWebp={`/public/img/${replacedTitle}-lg.webp`}
+          fallback={`/public/img/${replacedTitle}-lg.jpg`}
+          alt="Tour"
+          style={{ marginBottom: 30 }}
+        />
         <h2 style={{ marginBottom: 20, fontWeight: 600 }}>{tour.title}</h2>
 
         <TourCaption price={tour.price} destination={tour.destination} />

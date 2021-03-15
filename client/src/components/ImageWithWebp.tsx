@@ -5,7 +5,7 @@ interface IImageWithWebp {
   fallback: string,
   alt?: string,
   title?: string,
-  style: object
+  style?: object
 }
 
 const ImageWithWebp: React.FC<IImageWithWebp> = (
