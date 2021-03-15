@@ -10,7 +10,7 @@ import worldMap from '../utils/world.json';
 
 const HomePage: React.FC = () => {
   const width = window.innerWidth;
-  let mapComponent;
+  let mapComponent: React.ReactComponentElement<'div'>;
 
   if (width >= 1200) {
     const theme = useContext(ThemeContext);
@@ -21,10 +21,10 @@ const HomePage: React.FC = () => {
     let correctingCoef: number; // see useEffect()
 
     const layerProps = {
-      onMouseEnter: (e: any) => {
+      onMouseEnter: (e: React.MouseEvent) => {
         if (tooltipEl.current) {
           const tooltip = tooltipEl.current;
-          const pathBox = e.target.getBBox();
+          const pathBox = (e.target as SVGPathElement).getBBox();
           let leftValue;
           let topValue;
           if (pathBox.width > 150 && pathBox.height > 150) {
@@ -42,18 +42,18 @@ const HomePage: React.FC = () => {
 
           tooltip.style.left = leftValue;
           tooltip.style.top = topValue;
-          tooltip.innerHTML = e.target.attributes.name.value;
+          tooltip.innerHTML = (e.target as SVGPathElement).attributes.getNamedItem('name')?.value || '';
           tooltip.style.visibility = 'visible';
         }
       },
-      onMouseLeave: (e: any) => {
+      onMouseLeave: () => {
         if (tooltipEl.current) {
           tooltipEl.current.style.visibility = 'hidden';
         }
       },
-      onClick: (e: any) => {
-        const isChecked: string = e.target.attributes['aria-checked'].value;
-        const destination: string = e.target.attributes['aria-label'].value;
+      onClick: (e: React.MouseEvent) => {
+        const isChecked: string = (e.target as SVGPathElement).attributes.getNamedItem('aria-checked')?.value || '';
+        const destination: string = (e.target as SVGPathElement).attributes.getNamedItem('aria-label')?.value || '';
         if (isChecked === 'true') {
           dispatch(setCurrentFilter({ destination }));
           history.push('/tours');
