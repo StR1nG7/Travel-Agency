@@ -55,7 +55,7 @@ const CustomSelect: React.FC<ICustomSelectProps> = React.memo(({
       value={value}
       placeholder={(
         <>
-          <i className={`mdi ${icons[id as keyof IFilterData]} `} />
+          <i className={`mdi ${icons[id as keyof Omit<IFilterData, 'error'>]} `} />
           {' '}
           <span>{id}</span>
         </>

@@ -1,6 +1,8 @@
 import { Dispatch } from 'redux';
 import axios from 'axios';
-import { SET_FILTER_DATA } from '../constants';
+import {
+ COMMON_TEXT_ERROR, SET_FILTERS_ERROR, SET_FILTER_DATA,
+} from '../constants';
 
 export interface IOption {
 	value: string,
@@ -13,6 +15,7 @@ export interface IFilterData {
 	period: Array<IOption>,
 	persons: Array<IOption>,
 	hotels: Array<IOption>,
+	error: string
 }
 
 export interface ISetFilterDataAction {
@@ -25,7 +28,18 @@ export const setFilterData = (filterData: IFilterData): ISetFilterDataAction => 
 	filterData,
 });
 
-export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction>) => {
+export interface ISetFiltersErrorAction {
+	type: typeof SET_FILTERS_ERROR,
+	err: string
+}
+
+export const setFiltersError = (err: string): ISetFiltersErrorAction => ({
+	type: SET_FILTERS_ERROR,
+	err,
+});
+
+export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction |
+		ISetFiltersErrorAction>) => {
 	// fetch('http://localhost:4000/filterdata')
 	// 		.then(res => res.json() as Promise<IFilterData>)
 	// 		.then(data => dispatch(setFilterData(data)));
@@ -49,5 +63,9 @@ export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction>) => 
 			}`,
 	}).then((res) => {
 		dispatch(setFilterData(res.data.data.getFilterData));
+	}).catch((error) => {
+		// eslint-disable-next-line no-console
+		console.log(error);
+		dispatch(setFiltersError(COMMON_TEXT_ERROR));
 	});
 };

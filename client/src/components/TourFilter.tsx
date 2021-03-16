@@ -57,10 +57,11 @@ const TourFilter: React.FC = () => {
               let key: keyof IFilterData;
               // eslint-disable-next-line guard-for-in,no-restricted-syntax
               for (key in filterOptions) {
-                let value;
-                if (values[key]) {
-                  value = values[key];
-                } else {
+                if (key !== 'error') {
+                  let value;
+                  if (values[key]) {
+                    value = values[key];
+                  } else {
                   /*
                     Else-block is for case when user selected filters on Tours page with all tours,
                     after that went to Single Tour page with one tour,
@@ -72,23 +73,24 @@ const TourFilter: React.FC = () => {
                     set as value for CustomSelect component.
                   */
 
-                  // @ts-ignore
-                  const optionValue = currentFilters[key]; // for example, "Kyiv", "Egypt".
-                  const options = filterOptions[key];
-                  value = optionValue
-                      && options.find((currentItem) => currentItem.value === optionValue);
-                }
+                    // @ts-ignore
+                    const optionValue = currentFilters[key]; // for example, "Kyiv", "Egypt".
+                    const options = filterOptions[key];
+                    value = optionValue
+                        && options.find((currentItem) => currentItem.value === optionValue);
+                  }
 
-                selectComponents.push(
-                  <CustomSelect
-                    key={key}
-                    id={key}
-                    setFieldValue={setFieldValue}
-                    setFieldTouched={setFieldTouched}
-                    options={filterOptions[key]}
-                    value={value}
-                  />,
-                );
+                  selectComponents.push(
+                    <CustomSelect
+                      key={key}
+                      id={key}
+                      setFieldValue={setFieldValue}
+                      setFieldTouched={setFieldTouched}
+                      options={filterOptions[key]}
+                      value={value}
+                    />,
+                  );
+                }
               }
 
               let selectedPrice;

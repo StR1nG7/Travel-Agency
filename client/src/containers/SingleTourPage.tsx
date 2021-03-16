@@ -21,6 +21,10 @@ const SingleTourPage: React.FC = () => {
     dispatch(getTourThunkCreator(id));
   }, []);
 
+  if (tour.error) {
+    return <p>{tour.error}</p>;
+  }
+
   if (tour.title) {
     const replacedTitle = tour.title.replace(/ /g, '');
 
@@ -49,7 +53,7 @@ const SingleTourPage: React.FC = () => {
       </div>
     );
   }
-  return <p>Loading...</p>;
+  return <p>Please wait...</p>;
 };
 
 export default SingleTourPage;

@@ -1,8 +1,8 @@
 import {
- ISetCurrentFilterAction, ISetCurrentPageAction, ISetErrorAction, ISetToursAction, IToursData,
+ ISetCurrentFilterAction, ISetCurrentPageAction, ISetToursErrorAction, ISetToursAction, IToursData,
 } from '../actions/toursPage';
 import {
- SET_TOURS, SET_CURRENT_PAGE, SET_CURRENT_FILTER, SET_ERROR,
+ SET_TOURS, SET_CURRENT_PAGE, SET_CURRENT_FILTER, SET_TOURS_ERROR,
 } from '../constants';
 
 export interface IToursPageReducer extends IToursData {
@@ -12,7 +12,7 @@ export interface IToursPageReducer extends IToursData {
 }
 
 type TourActionsType = ISetToursAction | ISetCurrentPageAction | ISetCurrentFilterAction
-		| ISetErrorAction;
+		| ISetToursErrorAction;
 
 const toursPage = (state = {
 	count: 0, tours: [], currentPage: 1, currentFilters: {}, minPrice: 0, maxPrice: 0, error: '',
@@ -30,7 +30,7 @@ const toursPage = (state = {
 			return { ...state, currentPage: action.currentPage };
 		case SET_CURRENT_FILTER:
 			return { ...state, currentFilters: { ...state.currentFilters, ...action.currentFilter } };
-		case SET_ERROR:
+		case SET_TOURS_ERROR:
 			return { ...state, error: action.err };
 		default:
 			return state;

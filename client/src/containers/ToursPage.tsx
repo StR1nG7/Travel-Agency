@@ -9,6 +9,8 @@ import Pagination from './Pagination';
 
 const ToursPage:React.FC = () => {
   const toursPageState = useSelector((state) => state.toursPage);
+  const filtersFetchError = useSelector((state) => state.filterOptions.error);
+  const error = toursPageState.error;
   const tours = toursPageState.tours;
   const count = toursPageState.count;
   const currentPage = toursPageState.currentPage;
@@ -19,10 +21,14 @@ const ToursPage:React.FC = () => {
     dispatch(getToursThunkCreator({ page: currentPage, currentFilters }));
   }, []);
 
+  if (error) {
+    return <p>{error}</p>;
+  }
+
   return (
     <>
       <div className="col-12">
-        <TourFilter />
+        {!filtersFetchError && <TourFilter />}
         <div className="row">
           {
             tours.length !== 0
