@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, {
+ useContext, useEffect, useRef, useState,
+} from 'react';
 import { VectorMap } from '@south-paw/react-vector-maps';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -9,17 +11,28 @@ import CountryCard from '../components/CountryCard';
 import worldMap from '../utils/world.json';
 
 const HomePage: React.FC = () => {
+  const theme = useContext(ThemeContext);
+  const svgMapWrapper = useRef<HTMLDivElement>(null);
+  const tooltipEl = useRef<HTMLSpanElement>(null);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const [correctingCoef, setcorrectingCoef] = useState(1);
   const width = window.innerWidth;
   let mapComponent: React.ReactComponentElement<'div'>;
 
-  if (width >= 1200) {
-    const theme = useContext(ThemeContext);
-    const svgMapWrapper = useRef<HTMLDivElement>(null);
-    const tooltipEl = useRef<HTMLSpanElement>(null);
-    const history = useHistory();
-    const dispatch = useDispatch();
-    let correctingCoef: number; // see useEffect()
+  useEffect(() => {
+    const svgMap = document.querySelector('[aria-label=World]');
+    const viewBoxVal = svgMap?.attributes.getNamedItem('viewBox')?.value || '';
+    const viewBoxWidth = viewBoxVal.split(' ')[2];
 
+    if (svgMapWrapper.current) {
+      const mapWidth = svgMapWrapper.current.clientWidth;
+      const coef = mapWidth / +viewBoxWidth;
+      setcorrectingCoef(coef);
+    }
+  }, []);
+
+  if (width >= 1200) {
     const layerProps = {
       onMouseEnter: (e: React.MouseEvent) => {
         if (tooltipEl.current) {
@@ -60,18 +73,6 @@ const HomePage: React.FC = () => {
         }
       },
     };
-
-    useEffect(() => {
-      const svgMap = document.querySelector('[aria-label=World]');
-      // @ts-ignore
-      const viewBoxVal = svgMap.attributes.viewBox.value;
-      const viewBoxWidth = viewBoxVal.split(' ')[2];
-
-      if (svgMapWrapper.current) {
-        const mapWidth = svgMapWrapper.current.clientWidth;
-        correctingCoef = mapWidth / viewBoxWidth;
-      }
-    }, []);
 
     mapComponent = (
       <div ref={svgMapWrapper} style={{ position: 'relative' }}>

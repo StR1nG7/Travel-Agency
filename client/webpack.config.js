@@ -28,6 +28,12 @@ module.exports = (env, argv) => ({
     overlay: true,
     historyApiFallback: true,
     hot: true,
+    proxy: {
+      '/graphql': {
+        target: 'http://localhost:4000',
+        secure: false,
+      },
+    },
   },
   module: {
     rules: [

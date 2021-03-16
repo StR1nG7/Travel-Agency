@@ -14,7 +14,7 @@
 		"ecmaVersion": 2020,
 		"sourceType": "module"
 	},
-	"plugins": ["@typescript-eslint"],
+	"plugins": ["@typescript-eslint", "react-hooks"],
 	"settings": {
 //		"import/extensions": [".js",".jsx",".ts",".tsx"],
 //		"import/parsers": {
@@ -48,6 +48,8 @@
 		"react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
 		"react/prop-types": "off",
 		"no-use-before-define": "off",
-		"@typescript-eslint/no-use-before-define": ["warn"]
+		"@typescript-eslint/no-use-before-define": ["warn"],
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn"
 	}
 }

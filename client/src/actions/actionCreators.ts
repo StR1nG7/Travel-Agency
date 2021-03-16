@@ -67,7 +67,7 @@ export const getToursThunkCreator = (currentData: ICurrentData = {}) => (
 			}
 		}
 
-		axios.post('http://localhost:4000/graphql', {
+		axios.post('/graphql', {
 			query:
 				`query {
 					getTours( page: ${currentData.page}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {
@@ -106,7 +106,7 @@ export const setTour = (tour: ITour): ISetTourAction => ({
 
 export const getTourThunkCreator = (id: string) => (
 	(dispatch: Dispatch<ISetTourAction>) => {
-		axios.post('http://localhost:4000/graphql', {
+		axios.post('/graphql', {
 			query:
 				`query {
 					getTour( id: "${id}" ) {
@@ -167,7 +167,7 @@ export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction>) => 
 	// } );
 	const fragment = '{value, label}';
 
-	axios.post('http://localhost:4000/graphql', {
+	axios.post('/graphql', {
 		query:
 			`query {
 				getFilterData {
