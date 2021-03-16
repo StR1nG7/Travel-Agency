@@ -1,12 +1,11 @@
 import React from 'react';
 import Select from 'react-select';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import useSelector from '../hooks/useSelector';
 import { TOptionOrNull } from './TourFilter';
 import {
 	getToursThunkCreator, IFilterData, IOption, setCurrentFilter, setCurrentPage,
 } from '../actions/actionCreators';
-import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/toursPage';
 
 interface ICustomSelectProps {
 	id: string,
@@ -31,8 +30,7 @@ const CustomSelect: React.FC<ICustomSelectProps> = React.memo(({
 		hotels: 'mdi-hotel',
 	};
 
-	const currentFilters = useSelector((state: TRootState) => (state.toursPage as
-			IToursPageReducer).currentFilters);
+	const currentFilters = useSelector((state) => state.toursPage.currentFilters);
 	const dispatch = useDispatch();
 	const handleChange = (option: TOptionOrNull) => {
 		setFieldValue(id, option);

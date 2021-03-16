@@ -1,16 +1,15 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import useSelector from '../hooks/useSelector';
 import TourFilter from '../components/TourFilter';
 import Tour from '../components/Tour';
-import { getToursThunkCreator, ITour } from '../actions/actionCreators';
-import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/toursPage';
+import { getToursThunkCreator } from '../actions/actionCreators';
 import { TOURS_PER_PAGE } from '../constants';
 import Pagination from './Pagination';
 
 const ToursPage:React.FC = () => {
-  const toursPageState = useSelector((state: TRootState) => (state.toursPage as IToursPageReducer));
-  const tours = toursPageState.tours as Array<ITour>;
+  const toursPageState = useSelector((state) => state.toursPage);
+  const tours = toursPageState.tours;
   const count = toursPageState.count;
   const currentPage = toursPageState.currentPage;
   const currentFilters = toursPageState.currentFilters;

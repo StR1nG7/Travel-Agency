@@ -19,4 +19,4 @@ const filterOptionsReducer = (state = filterOptionsInitialState, action: ISetFil
 	}
 };
 
-export { filterOptionsReducer as filterOptions };
+export default filterOptionsReducer;

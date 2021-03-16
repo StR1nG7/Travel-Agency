@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Formik, Field } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import useSelector from '../hooks/useSelector';
 import CustomSelect from './CustomSelect';
 import {
   getFilterDataThunk,
@@ -10,8 +11,6 @@ import {
   setCurrentFilter,
   setCurrentPage,
 } from '../actions/actionCreators';
-import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/toursPage';
 import { flex } from '../utils/styled-components';
 
 export type TOptionOrNull = IOption | null;
@@ -26,15 +25,10 @@ export interface formValues {
 }
 
 const TourFilter: React.FC = () => {
-  const filterOptions: IFilterData = useSelector((state: TRootState) => state.filterOptions);
-  const currentPage = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).currentPage);
-  const currentFilters = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).currentFilters);
-  const minPrice = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).minPrice);
-  const maxPrice = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).maxPrice);
+  const filterOptions: IFilterData = useSelector((state) => state.filterOptions);
+  const currentFilters = useSelector((state) => state.toursPage.currentFilters);
+  const minPrice = useSelector((state) => state.toursPage.minPrice);
+  const maxPrice = useSelector((state) => state.toursPage.maxPrice);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTourThunkCreator, ITour } from '../actions/actionCreators';
-import { TRootState } from '../reducers';
+import { useDispatch } from 'react-redux';
+import useSelector from '../hooks/useSelector';
+import { getTourThunkCreator } from '../actions/actionCreators';
 import TourSchedule from '../components/TourSchedule';
 import TourTable from '../components/TourTable';
 import TourCaption from '../components/TourCaption';
-import ImageWithWebp from "../components/ImageWithWebp";
+import ImageWithWebp from '../components/ImageWithWebp';
 
 interface ParamsTypes {
   id: string
@@ -15,7 +15,7 @@ interface ParamsTypes {
 const SingleTourPage: React.FC = () => {
   const { id } = useParams<ParamsTypes>();
   const dispatch = useDispatch();
-  const tour = useSelector((state: TRootState) => state.singleTourPage) as ITour;
+  const tour = useSelector((state) => state.singleTourPage);
 
   useEffect(() => {
     dispatch(getTourThunkCreator(id));

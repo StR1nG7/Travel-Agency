@@ -1,19 +1,16 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { TOURS_PER_PAGE } from '../constants';
 import { getToursThunkCreator, setCurrentPage } from '../actions/actionCreators';
-import { TRootState } from '../reducers';
-import { IToursPageReducer } from '../reducers/toursPage';
 import PaginationItem from '../components/PaginationItem';
 import { flex } from '../utils/styled-components';
+import useSelector from '../hooks/useSelector';
 
 const Pagination: React.FC = () => {
-  const count = useSelector((state: TRootState) => (state.toursPage as IToursPageReducer).count);
-  const currentFilters = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).currentFilters);
-  const currentPage = useSelector((state: TRootState) => (state.toursPage as
-      IToursPageReducer).currentPage);
+  const count = useSelector((state) => state.toursPage.count);
+  const currentFilters = useSelector((state) => state.toursPage.currentFilters);
+  const currentPage = useSelector((state) => state.toursPage.currentPage);
 
   const dispatch = useDispatch();
   const handlePagination = (pageNumber: number) => {
