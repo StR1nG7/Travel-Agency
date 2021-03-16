@@ -1,5 +1,6 @@
-import { ISetTourAction, ITour } from '../actions/actionCreators';
-import { SET_SINGLE_TOUR } from '../constants';
+import { ISetErrorAction, ITour } from '../actions/toursPage';
+import { ISetTourAction } from '../actions/singleTourPage';
+import { SET_ERROR, SET_SINGLE_TOUR } from '../constants';
 
 const initialState = {
 	id: '',
@@ -11,12 +12,22 @@ const initialState = {
 	details: '',
 	priceIncluded: [],
 	schedule: [],
+	error: '',
 };
 
-const singleTourPage = (state = initialState, action: ISetTourAction): ITour => {
+interface ISingleTourPage extends ITour {
+	error: string
+}
+
+const singleTourPage = (
+		state = initialState,
+		action: ISetTourAction | ISetErrorAction,
+): ISingleTourPage => {
 	switch (action.type) {
 		case SET_SINGLE_TOUR:
-			return action.tour;
+			return { ...state, ...action.tour };
+		case SET_ERROR:
+			return { ...state, error: action.err };
 		default:
 			return state;
 	}

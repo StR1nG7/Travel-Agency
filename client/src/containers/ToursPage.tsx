@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import useSelector from '../hooks/useSelector';
 import TourFilter from '../components/TourFilter';
 import Tour from '../components/Tour';
-import { getToursThunkCreator } from '../actions/actionCreators';
+import { getToursThunkCreator } from '../actions/toursPage';
 import { TOURS_PER_PAGE } from '../constants';
 import Pagination from './Pagination';
 

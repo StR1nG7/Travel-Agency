@@ -3,9 +3,8 @@ import Select from 'react-select';
 import { useDispatch } from 'react-redux';
 import useSelector from '../hooks/useSelector';
 import { TOptionOrNull } from './TourFilter';
-import {
-	getToursThunkCreator, IFilterData, IOption, setCurrentFilter, setCurrentPage,
-} from '../actions/actionCreators';
+import { getToursThunkCreator, setCurrentFilter, setCurrentPage } from '../actions/toursPage';
+import { IFilterData, IOption } from '../actions/filterOptions';
 
 interface ICustomSelectProps {
 	id: string,

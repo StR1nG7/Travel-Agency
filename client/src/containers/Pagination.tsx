@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { TOURS_PER_PAGE } from '../constants';
-import { getToursThunkCreator, setCurrentPage } from '../actions/actionCreators';
+import { getToursThunkCreator, setCurrentPage } from '../actions/toursPage';
 import PaginationItem from '../components/PaginationItem';
 import { flex } from '../utils/styled-components';
 import useSelector from '../hooks/useSelector';

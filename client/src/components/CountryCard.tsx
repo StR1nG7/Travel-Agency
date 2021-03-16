@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { setCurrentFilter } from '../actions/actionCreators';
+import { setCurrentFilter } from '../actions/toursPage';
 
 export const countriesData = {
   egypt: {

@@ -1,4 +1,4 @@
-import { IFilterData, ISetFilterDataAction } from '../actions/actionCreators';
+import { IFilterData, ISetFilterDataAction } from '../actions/filterOptions';
 import { SET_FILTER_DATA } from '../constants';
 
 export const filterOptionsInitialState = {

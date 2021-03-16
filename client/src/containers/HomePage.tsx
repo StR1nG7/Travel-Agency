@@ -5,7 +5,7 @@ import { VectorMap } from '@south-paw/react-vector-maps';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
-import { setCurrentFilter } from '../actions/actionCreators';
+import { setCurrentFilter } from '../actions/toursPage';
 import CountryCard from '../components/CountryCard';
 // @ts-ignore
 import worldMap from '../utils/world.json';

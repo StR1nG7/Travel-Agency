@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { flex } from '../utils/styled-components';
 import ImageWithWebp from './ImageWithWebp';
-import { ITour } from '../actions/actionCreators';
+import { ITour } from '../actions/toursPage';
 
 const Tour: React.FC<ITour> = (
     {

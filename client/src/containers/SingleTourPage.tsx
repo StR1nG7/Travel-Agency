@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useSelector from '../hooks/useSelector';
-import { getTourThunkCreator } from '../actions/actionCreators';
+import { getTourThunkCreator } from '../actions/singleTourPage';
 import TourSchedule from '../components/TourSchedule';
 import TourTable from '../components/TourTable';
 import TourCaption from '../components/TourCaption';
@@ -21,9 +21,9 @@ const SingleTourPage: React.FC = () => {
     dispatch(getTourThunkCreator(id));
   }, []);
 
-  const replacedTitle = tour.title.replace(/ /g, '');
-
   if (tour.title) {
+    const replacedTitle = tour.title.replace(/ /g, '');
+
     return (
       <div className="col-12">
         <ImageWithWebp

@@ -4,13 +4,8 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import useSelector from '../hooks/useSelector';
 import CustomSelect from './CustomSelect';
-import {
-  getFilterDataThunk,
-  getToursThunkCreator,
-  IFilterData, IOption,
-  setCurrentFilter,
-  setCurrentPage,
-} from '../actions/actionCreators';
+import { getToursThunkCreator, setCurrentFilter, setCurrentPage } from '../actions/toursPage';
+import { getFilterDataThunk, IFilterData, IOption } from '../actions/filterOptions';
 import { flex } from '../utils/styled-components';
 
 export type TOptionOrNull = IOption | null;

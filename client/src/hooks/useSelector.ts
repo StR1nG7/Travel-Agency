@@ -1,6 +1,7 @@
 import { createSelectorHook } from 'react-redux';
 import { IToursPageReducer } from '../reducers/toursPage';
-import { IFilterData, ITour } from '../actions/actionCreators';
+import { ITour } from '../actions/toursPage';
+import { IFilterData } from '../actions/filterOptions';
 
 type TRootState = {
   toursPage: IToursPageReducer,
