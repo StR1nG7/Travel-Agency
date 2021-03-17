@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { ITourScheduleDay } from '../actions/toursPage';
+
 import { flex } from '../utils/styled-components';
 
 interface ITourScheduleDayProps {

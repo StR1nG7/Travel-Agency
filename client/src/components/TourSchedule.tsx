@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { ITour } from '../actions/toursPage';
+
 import TourScheduleDay from './TourScheduleDay';
 
 interface ITourScheduleProps {

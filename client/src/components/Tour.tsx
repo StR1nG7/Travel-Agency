@@ -1,9 +1,11 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
 import { flex } from '../utils/styled-components';
-import ImageWithWebp from './ImageWithWebp';
 import { ITour } from '../actions/toursPage';
+
+import ImageWithWebp from './ImageWithWebp';
 
 const Tour: React.FC<ITour> = (
     {

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import useSelector from '../hooks/useSelector';
 import { getTourThunkCreator } from '../actions/singleTourPage';
+
 import TourSchedule from '../components/TourSchedule';
 import TourTable from '../components/TourTable';
 import TourCaption from '../components/TourCaption';
@@ -19,7 +21,7 @@ const SingleTourPage: React.FC = () => {
 
   useEffect(() => {
     dispatch(getTourThunkCreator(id));
-  }, []);
+  }, [id]);
 
   if (tour.error) {
     return <p>{tour.error}</p>;

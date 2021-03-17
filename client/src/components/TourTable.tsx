@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import { flex } from '../utils/styled-components';
 
 interface ITourTableProps {

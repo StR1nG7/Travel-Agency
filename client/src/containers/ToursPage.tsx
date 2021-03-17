@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import useSelector from '../hooks/useSelector';
-import TourFilter from '../components/TourFilter';
-import Tour from '../components/Tour';
 import { getToursThunkCreator } from '../actions/toursPage';
 import { TOURS_PER_PAGE } from '../constants';
-import Pagination from './Pagination';
+
+import TourFilterContainer from './TourFilterContainer';
+import PaginationContainer from './PaginationContainer';
+import Tour from '../components/Tour';
 
 const ToursPage:React.FC = () => {
   const toursPageState = useSelector((state) => state.toursPage);
@@ -19,7 +21,7 @@ const ToursPage:React.FC = () => {
 
   useEffect(() => {
     dispatch(getToursThunkCreator({ page: currentPage, currentFilters }));
-  }, []);
+  }, [currentPage, currentFilters]);
 
   if (error) {
     return <p>{error}</p>;
@@ -28,7 +30,7 @@ const ToursPage:React.FC = () => {
   return (
     <>
       <div className="col-12">
-        {!filtersFetchError && <TourFilter />}
+        {!filtersFetchError && <TourFilterContainer />}
         <div className="row">
           {
             tours.length !== 0
@@ -39,7 +41,7 @@ const ToursPage:React.FC = () => {
         </div>
       </div>
 
-      { count && count > TOURS_PER_PAGE ? <Pagination /> : false }
+      { count && count > TOURS_PER_PAGE ? <PaginationContainer /> : false }
     </>
   );
 };
