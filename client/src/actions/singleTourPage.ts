@@ -24,32 +24,32 @@ export const setSingleTourError = (err: string): ISetSingleTourErrorAction => ({
 });
 
 export const getTourThunkCreator = (id: string) => (
-		(dispatch: Dispatch<ISetTourAction | ISetSingleTourErrorAction>) => {
-			axios.post('/graphql', {
-				query:
-						`query {
-					getTour( id: "${id}" ) {
-						id,
-						title,
-						destination,
-						period,
-						price,
-						description,
-						details,
-						priceIncluded,
-						schedule {
-							day
-							title
-							description
-						}
+	(dispatch: Dispatch<ISetTourAction | ISetSingleTourErrorAction>) => (
+		axios.post('/graphql', {
+			query:
+					`query {
+				getTour( id: "${id}" ) {
+					id,
+					title,
+					destination,
+					period,
+					price,
+					description,
+					details,
+					priceIncluded,
+					schedule {
+						day
+						title
+						description
 					}
-				}`,
-			}).then((res) => {
-				dispatch(setTour(res.data.data.getTour));
-			}).catch((error) => {
-				// eslint-disable-next-line no-console
-				console.log(error);
-				dispatch(setSingleTourError(COMMON_TEXT_ERROR));
-			});
-		}
+				}
+			}`,
+		}).then((res) => {
+			dispatch(setTour(res.data.data.getTour));
+		}).catch((error) => {
+			// eslint-disable-next-line no-console
+			console.log(error);
+			dispatch(setSingleTourError(COMMON_TEXT_ERROR));
+		})
+	)
 );

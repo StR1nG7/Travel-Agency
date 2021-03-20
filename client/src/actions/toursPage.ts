@@ -20,10 +20,10 @@ export interface ITour {
 	persons?: number,
 	hotels?: Array<string>,
 	price: number,
-	description: string,
-	details: string,
-	priceIncluded: Array<string>,
-	schedule: Array<ITourScheduleDay>
+	description?: string,
+	details?: string,
+	priceIncluded?: Array<string>,
+	schedule?: Array<ITourScheduleDay>
 }
 
 export interface IToursData {
@@ -77,7 +77,7 @@ export const getToursThunkCreator = (currentData: ICurrentData = {}) => (
 				}
 			}
 
-			axios.post('/graphql', {
+			return axios.post('/graphql', {
 				query:
 						`query {
 					getTours( page: ${currentData.page}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {

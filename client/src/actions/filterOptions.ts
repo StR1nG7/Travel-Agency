@@ -40,29 +40,21 @@ export const setFiltersError = (err: string): ISetFiltersErrorAction => ({
 
 export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction |
 		ISetFiltersErrorAction>) => {
-	// fetch('http://localhost:4000/filterdata')
-	// 		.then(res => res.json() as Promise<IFilterData>)
-	// 		.then(data => dispatch(setFilterData(data)));
-
-	// axios.get('http://localhost:4000/filterdata')
-	// 		.then( res => {
-	//   dispatch(setFilterData(res.data));
-	// } );
 	const fragment = '{value, label}';
 
-	axios.post('/graphql', {
+	return axios.post('/graphql', {
 		query:
 				`query {
-				getFilterData {
-					from ${fragment},
-					destination ${fragment},
-					period ${fragment},
-					persons ${fragment},
-					hotels ${fragment}
-				}
-			}`,
-	}).then((res) => {
-		dispatch(setFilterData(res.data.data.getFilterData));
+			getFilterData {
+				from ${fragment},
+				destination ${fragment},
+				period ${fragment},
+				persons ${fragment},
+				hotels ${fragment}
+			}
+		}`,
+	}).then((response) => {
+		dispatch(setFilterData(response.data.data.getFilterData));
 	}).catch((error) => {
 		// eslint-disable-next-line no-console
 		console.log(error);
