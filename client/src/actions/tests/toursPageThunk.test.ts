@@ -23,7 +23,7 @@ describe('async action of single tour page (getTourThunkCreator())', () => {
       toursData: toursDataMock,
     }];
 
-    await expectActionsHelper(getToursThunkCreator({ page: 1, size: 6 }), expectedActions);
+    await expectActionsHelper(getToursThunkCreator({ page: 1, size: 2, currentFilters: { from: 'Kyiv' } }), expectedActions);
     done();
   });
 
@@ -35,7 +35,7 @@ describe('async action of single tour page (getTourThunkCreator())', () => {
       err: COMMON_TEXT_ERROR,
     }];
 
-    await expectActionsHelper(getToursThunkCreator({ page: 1, size: 6 }), expectedActions);
+    await expectActionsHelper(getToursThunkCreator({ page: 1, size: 2 }), expectedActions);
     done();
   });
 });

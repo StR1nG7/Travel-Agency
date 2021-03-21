@@ -20,9 +20,9 @@ export interface ITour {
 	persons?: number,
 	hotels?: Array<string>,
 	price: number,
-	description?: string,
-	details?: string,
-	priceIncluded?: Array<string>,
+	description: string,
+	details: string,
+	priceIncluded: Array<string>,
 	schedule?: Array<ITourScheduleDay>
 }
 
@@ -59,22 +59,18 @@ interface ICurrentData {
 	currentFilters?: {[key: string]: any}
 }
 
-export const getToursThunkCreator = (currentData: ICurrentData = {}) => (
+export const getToursThunkCreator = (currentData: ICurrentData) => (
 		(dispatch: Dispatch<ISetToursAction | ISetToursErrorAction>) => {
 			let currentFiltersFragment;
 
 			if (currentData.currentFilters) {
 				const currentFilters = currentData.currentFilters;
 				const keys = Object.keys(currentFilters);
-				if (keys[0]) {
-					const properties: Array<string> = [];
-					keys.forEach((key) => {
-						if (currentFilters[key]) {
-							properties.push(`${key}: "${currentFilters[key]}"`);
-						}
-					});
-					currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
-				}
+				const properties: Array<string> = [];
+				keys.forEach((key) => {
+						properties.push(`${key}: "${currentFilters[key]}"`);
+				});
+				currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
 			}
 
 			return axios.post('/graphql', {
@@ -121,7 +117,7 @@ export interface ISetCurrentFilterAction {
 	currentFilter: object
 }
 
-export const setCurrentFilter = (currentFilter = {}): ISetCurrentFilterAction => ({
+export const setCurrentFilter = (currentFilter: object): ISetCurrentFilterAction => ({
 	type: SET_CURRENT_FILTER,
 	currentFilter,
 });

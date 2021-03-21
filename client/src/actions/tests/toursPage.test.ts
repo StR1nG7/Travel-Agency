@@ -1,6 +1,10 @@
 /* eslint-disable no-undef */
-import { setTours, setToursError } from '../toursPage';
-import { SET_TOURS, SET_TOURS_ERROR } from '../../constants';
+import {
+ setTours, setToursError, setCurrentPage, setCurrentFilter,
+} from '../toursPage';
+import {
+  SET_TOURS, SET_TOURS_ERROR, SET_CURRENT_PAGE, SET_CURRENT_FILTER,
+} from '../../constants';
 
 // eslint-disable-next-line import/prefer-default-export
 export const toursDataMock = {
@@ -15,16 +19,22 @@ export const toursDataMock = {
       persons: 2,
       hotels: ['3', '4'],
       price: 3000,
+      description: 'Desc1',
+      details: 'Details1',
+      priceIncluded: ['Tickets', 'Hotel'],
     },
     {
       id: '2',
       title: 'Title2',
-      from: ['Lviv'],
+      from: ['Kyiv'],
       destination: 'Egypt',
       period: 7,
       persons: 2,
       hotels: ['4', '5'],
       price: 3500,
+      description: 'Desc1',
+      details: 'Details1',
+      priceIncluded: ['Tickets', 'Hotel'],
     },
   ],
   minPrice: 3000,
@@ -47,5 +57,23 @@ describe('sync actions of tours page', () => {
       err,
     };
     expect(setToursError(err)).toEqual(expectedAction);
+  });
+
+  it('setCurrentPage(): should create an action to set current page number', () => {
+    const currentPageMock = 3;
+    const expectedAction = {
+      type: SET_CURRENT_PAGE,
+      currentPage: currentPageMock,
+    };
+    expect(setCurrentPage(currentPageMock)).toEqual(expectedAction);
+  });
+
+  it('setCurrentFilter(): should create an action to set current filter', () => {
+    const currentFilterMock = { from: 'Kyiv' };
+    const expectedAction = {
+      type: SET_CURRENT_FILTER,
+      currentFilter: currentFilterMock,
+    };
+    expect(setCurrentFilter(currentFilterMock)).toEqual(expectedAction);
   });
 });
