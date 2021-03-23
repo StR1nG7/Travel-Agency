@@ -5,6 +5,16 @@ import { mockStore, expectActionsHelper, moxiosWaitHelper } from './utilsForActi
 import { getFilterDataThunk } from '../filterOptions';
 import { COMMON_TEXT_ERROR, SET_FILTER_DATA, SET_FILTERS_ERROR } from '../../constants';
 
+// eslint-disable-next-line import/prefer-default-export
+export const filterDataMock = {
+  from: [{ value: 'All', label: 'All' }],
+  destination: [{ value: 'All', label: 'All' }],
+  hotels: [{ value: 'All', label: 'All' }],
+  period: [{ value: 'All', label: 'All' }],
+  persons: [{ value: 'All', label: 'All' }],
+  error: '',
+};
+
 describe('filter options async actions (getFilterDataThunk())', () => {
   beforeEach(() => {
     moxios.install();
@@ -15,14 +25,6 @@ describe('filter options async actions (getFilterDataThunk())', () => {
   });
 
   it('should fetch filter options and set it correctly', async (done) => {
-    const filterDataMock = {
-      from: [{ value: 'All', label: 'All' }],
-      destination: [{ value: 'All', label: 'All' }],
-      hotels: [{ value: 'All', label: 'All' }],
-      period: [{ value: 'All', label: 'All' }],
-      persons: [{ value: 'All', label: 'All' }],
-    };
-
     moxiosWaitHelper({ data: { getFilterData: filterDataMock } });
 
     const expectedActions = [{

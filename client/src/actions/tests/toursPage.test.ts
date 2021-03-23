@@ -8,7 +8,7 @@ import {
 
 // eslint-disable-next-line import/prefer-default-export
 export const toursDataMock = {
-  count: 7,
+  count: 2,
   tours: [
     {
       id: '1',

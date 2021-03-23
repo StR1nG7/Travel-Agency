@@ -14,9 +14,17 @@ export interface IToursPageReducer extends IToursData {
 type TourActionsType = ISetToursAction | ISetCurrentPageAction | ISetCurrentFilterAction
 		| ISetToursErrorAction;
 
-const toursPage = (state = {
-	count: 0, tours: [], currentPage: 1, currentFilters: {}, minPrice: 0, maxPrice: 0, error: '',
-}, action: TourActionsType): IToursPageReducer => {
+export const toursPageInitialState = {
+	count: 0,
+	tours: [],
+	currentPage: 1,
+	currentFilters: {},
+	minPrice: 0,
+	maxPrice: 0,
+	error: '',
+};
+
+const toursPage = (state = toursPageInitialState, action: TourActionsType): IToursPageReducer => {
 	switch (action.type) {
 		case SET_TOURS:
 			return {

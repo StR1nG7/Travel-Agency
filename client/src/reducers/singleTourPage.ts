@@ -2,7 +2,7 @@ import { ITour } from '../actions/toursPage';
 import { ISetSingleTourErrorAction, ISetTourAction } from '../actions/singleTourPage';
 import { SET_SINGLE_TOUR_ERROR, SET_SINGLE_TOUR } from '../constants';
 
-const initialState = {
+export const initialState = {
 	id: '',
 	title: '',
 	destination: '',
