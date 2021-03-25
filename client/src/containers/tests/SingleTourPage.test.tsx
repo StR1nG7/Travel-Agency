@@ -4,10 +4,10 @@ import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 // @ts-ignore
 import * as moxios from 'moxios';
-import renderWithRouterAndContext from '../utils/utilsForTesting';
-import App from './App';
-import { COMMON_TEXT_ERROR } from '../constants';
-import { moxiosWaitHelper } from '../actions/tests/utilsForActionsTests';
+import renderWithRouterAndContext from '../../utils/utilsForTesting';
+import App from '../App';
+import { COMMON_TEXT_ERROR } from '../../constants';
+import { moxiosWaitHelper } from '../../actions/tests/utilsForActionsTests';
 
 describe('App tests for Single tour page', () => {
   beforeAll(() => {

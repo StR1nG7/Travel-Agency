@@ -8,10 +8,10 @@ import '@testing-library/jest-dom';
 import * as moxios from 'moxios';
 import selectEvent from 'react-select-event';
 import userEvent from '@testing-library/user-event';
-import renderWithRouterAndContext from '../utils/utilsForTesting';
-import App from './App';
-import { COMMON_TEXT_ERROR } from '../constants';
-import { moxiosWaitHelper } from '../actions/tests/utilsForActionsTests';
+import renderWithRouterAndContext from '../../utils/utilsForTesting';
+import App from '../App';
+import { COMMON_TEXT_ERROR } from '../../constants';
+import { moxiosWaitHelper } from '../../actions/tests/utilsForActionsTests';
 
 describe('App tests for Tours page', () => {
   beforeAll(() => {

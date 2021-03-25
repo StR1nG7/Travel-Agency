@@ -3,8 +3,8 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import renderWithRouterAndContext from '../utils/utilsForTesting';
-import App from './App';
+import renderWithRouterAndContext from '../../utils/utilsForTesting';
+import App from '../App';
 
 const getBBox = () => ({
   x: 0,
