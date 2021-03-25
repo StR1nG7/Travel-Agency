@@ -15,7 +15,7 @@ export interface ITourFilterProps {
 const TourFilter: React.FC<ITourFilterProps> = ({
  selectComponents, minPrice, maxPrice, selectedPrice, handlePriceChange,
 }) => (
-  <STourFilterWrapper>
+  <STourFilterWrapper data-testid="tourFilterForm">
 
     { selectComponents }
 

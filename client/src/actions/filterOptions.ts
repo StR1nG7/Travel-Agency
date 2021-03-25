@@ -42,7 +42,7 @@ export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction |
 		ISetFiltersErrorAction>) => {
 	const fragment = '{value, label}';
 
-	return axios.post('/graphql', {
+	return axios.post('http://localhost:4000/graphql', {
 		query:
 				`query {
 			getFilterData {

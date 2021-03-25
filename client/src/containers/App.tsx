@@ -10,7 +10,7 @@ const ToursPage = React.lazy(() => import('./ToursPage'));
 const SingleTourPage = React.lazy(() => import('./SingleTourPage'));
 
 const App:React.FC = () => (
-  <ThemeProvider theme={theme}>
+  <>
     <GlobalStyle />
     <Header />
 
@@ -29,7 +29,7 @@ const App:React.FC = () => (
         </div>
       </div>
     </main>
-  </ThemeProvider>
+  </>
 );
 
 export default App;

@@ -19,7 +19,7 @@ const CountryCard: React.FC<ICountryCardProps> = (
   <div className="col-12 col-sm-6 col-lg-4" style={{ marginBottom: 40 }}>
     <SCountryWrapper>
       <SCountry xmlns="http://www.w3.org/2000/svg" viewBox={countryData.viewbox}>
-        <path name="Indonesia" d={countryData.path} onClick={handleCountryClick} />
+        <path name={countryName} aria-label={`mobilePath-${countryName}`} d={countryData.path} onClick={handleCountryClick} />
       </SCountry>
     </SCountryWrapper>
     <SName>{countryName}</SName>

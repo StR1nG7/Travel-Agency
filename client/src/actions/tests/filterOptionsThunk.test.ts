@@ -8,7 +8,7 @@ import { COMMON_TEXT_ERROR, SET_FILTER_DATA, SET_FILTERS_ERROR } from '../../con
 // eslint-disable-next-line import/prefer-default-export
 export const filterDataMock = {
   from: [{ value: 'All', label: 'All' }],
-  destination: [{ value: 'All', label: 'All' }],
+  destination: [{ value: 'Turkey', label: 'Turkey' }],
   hotels: [{ value: 'All', label: 'All' }],
   period: [{ value: 'All', label: 'All' }],
   persons: [{ value: 'All', label: 'All' }],

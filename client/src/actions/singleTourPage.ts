@@ -25,7 +25,7 @@ export const setSingleTourError = (err: string): ISetSingleTourErrorAction => ({
 
 export const getTourThunkCreator = (id: string) => (
 	(dispatch: Dispatch<ISetTourAction | ISetSingleTourErrorAction>) => (
-		axios.post('/graphql', {
+		axios.post('http://localhost:4000/graphql', {
 			query:
 					`query {
 				getTour( id: "${id}" ) {

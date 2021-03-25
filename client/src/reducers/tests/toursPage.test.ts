@@ -9,7 +9,7 @@ describe('toursPage tests', () => {
 	it('case SET_TOURS: should create new state with tours', () => {
 		const newState = toursPage(toursPageInitialState, setTours(toursDataMock));
 		expect(newState.count).toBe(2);
-		expect(newState.tours[1].title).toBe('Title2');
+		expect(newState.tours[1].title).toBe('Hurghada');
 	});
 
 	it('case SET_TOURS_ERROR: should create new state with error and empty data', () => {

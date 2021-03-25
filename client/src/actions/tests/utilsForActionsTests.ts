@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import * as moxios from 'moxios';
 // @ts-ignore
 import configureMockStore from 'redux-mock-store';
-import * as expect from 'expect';
+import expect from 'expect';
 import { Dispatch } from 'redux';
 
 const mockstore = configureMockStore([thunk]);

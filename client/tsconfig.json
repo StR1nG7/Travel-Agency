@@ -4,6 +4,8 @@
     "sourceMap": true,
     "target": "ES5",
     "strict": true,
+    "lib": ["dom", "esnext"], // for tests with react-testing-library
+    "esModuleInterop": true, // for tests with  react-testing-library
     "module": "esnext",
     "jsx": "react",
     "removeComments": true,

@@ -25,6 +25,7 @@ const CustomSelect: React.FC<ICustomSelectProps> = React.memo(({
   <label>
     <Select
       id={id}
+      name={id}
       options={options}
       onChange={handleSelectChange}
       onBlur={handleSelectBlur}

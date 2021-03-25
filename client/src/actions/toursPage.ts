@@ -73,7 +73,7 @@ export const getToursThunkCreator = (currentData: ICurrentData) => (
 				currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
 			}
 
-			return axios.post('/graphql', {
+			return axios.post('http://localhost:4000/graphql', {
 				query:
 						`query {
 					getTours( page: ${currentData.page}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {

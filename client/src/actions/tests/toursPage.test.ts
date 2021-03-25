@@ -12,7 +12,7 @@ export const toursDataMock = {
   tours: [
     {
       id: '1',
-      title: 'Title1',
+      title: 'Antalya',
       from: ['Kyiv'],
       destination: 'Turkey',
       period: 7,
@@ -25,7 +25,7 @@ export const toursDataMock = {
     },
     {
       id: '2',
-      title: 'Title2',
+      title: 'Hurghada',
       from: ['Kyiv'],
       destination: 'Egypt',
       period: 7,

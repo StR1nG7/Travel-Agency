@@ -13,6 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^13.0.10",
     "@types/jest": "^26.0.21",
     "@types/node": "^14.14.6",
     "@types/react": "^16.9.55",
@@ -36,6 +39,7 @@
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.3",
     "moxios": "^0.4.0",
+    "react-select-event": "^5.2.0",
     "redux-mock-store": "^1.5.4",
     "ts-jest": "^26.5.4",
     "typescript": "^4.0.5",

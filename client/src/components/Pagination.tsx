@@ -17,9 +17,9 @@ const Pagination: React.FC<IPaginationProps> = (
 },
 ) => (
   <div className="col-sm-8 col-md-6 col-lg-4 mx-auto">
-    <SPaginationWrapper>
+    <SPaginationWrapper data-testid="Pagination">
       <SPrevArrowWrapper>
-        { currentPage > 1 && <SPrevArrow className="mdi mdi-arrow-left" onClick={handlePrevClick} />}
+        { currentPage > 1 && <SPrevArrow aria-label="Prev" className="mdi mdi-arrow-left" onClick={handlePrevClick} />}
       </SPrevArrowWrapper>
 
       <SPaginationLinks>
@@ -27,7 +27,7 @@ const Pagination: React.FC<IPaginationProps> = (
       </SPaginationLinks>
 
       <SNextArrowWrapper>
-        { currentPage < pages && <SNextArrow className="mdi mdi-arrow-right" onClick={handleNextClick} />}
+        { currentPage < pages && <SNextArrow aria-label="Next" className="mdi mdi-arrow-right" onClick={handleNextClick} />}
       </SNextArrowWrapper>
     </SPaginationWrapper>
   </div>
