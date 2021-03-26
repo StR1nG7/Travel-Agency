@@ -61,7 +61,7 @@ const STourFilterWrapper = styled.form`
 			border: none;
 			border-radius: 0;
 		}
-		[class*='ValueContainer'],
+		[class*='-placeholder'],
 		[class*='-menu'] {
 			font-size: .9375em;
 			text-transform: capitalize;

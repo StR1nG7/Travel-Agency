@@ -33,8 +33,8 @@ const SingleTourPage: React.FC = () => {
     return (
       <div className="col-12">
         <ImageWithWebp
-          srcWebp={`/public/img/${replacedTitle}-lg.webp`}
-          fallback={`/public/img/${replacedTitle}-lg.jpg`}
+          srcWebp={`/assets/img/${replacedTitle}-lg.webp`}
+          fallback={`/assets/img/${replacedTitle}-lg.jpg`}
           alt="Tour"
           style={{ marginBottom: 30 }}
         />

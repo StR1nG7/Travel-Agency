@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import axios from 'axios';
 import {
 	SET_TOURS, TOURS_PER_PAGE, SET_TOURS_ERROR, SET_CURRENT_PAGE, SET_CURRENT_FILTER,
-	COMMON_TEXT_ERROR,
+	COMMON_TEXT_ERROR, API_DEV_HOST,
 } from '../constants';
 
 export interface ITourScheduleDay {
@@ -73,7 +73,7 @@ export const getToursThunkCreator = (currentData: ICurrentData) => (
 				currentFiltersFragment = `, currentFilters: { ${properties.join(', ')} }`;
 			}
 
-			return axios.post('http://localhost:4000/graphql', {
+			return axios.post(`${API_DEV_HOST}/graphql`, {
 				query:
 						`query {
 					getTours( page: ${currentData.page}, size: ${TOURS_PER_PAGE} ${currentFiltersFragment || ''} ) {

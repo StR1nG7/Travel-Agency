@@ -1,17 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
 
 module.exports = (env, argv) => ({
 	mode: 'development',
-	context: path.resolve(__dirname, 'src'),
-  entry: { main: './index.tsx' },
+	// context: path.resolve(__dirname, 'src'),
+  entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: argv.mode === 'production' ? './js/[name].[chunkhash].js' : './js/[name].js',
-    chunkFilename: argv.mode === 'production' ? './js/[name].[chunkhash].js' : './js/[name].js',
+    filename: argv.mode === 'production' ? './assets/js/[name].[chunkhash].js' : './assets/js/[name].js',
+    chunkFilename: argv.mode === 'production' ? './assets/js/[name].[chunkhash].js' : './assets/js/[name].js',
     publicPath: '/',
   },
   resolve: {
@@ -54,12 +55,22 @@ module.exports = (env, argv) => ({
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './index.html',
-    }),
-		new WebpackMd5Hash(),
-		new CleanWebpackPlugin(),
-    new ErrorOverlayPlugin(),
-  ],
+  plugins: argv.mode === 'production' ? [
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+      }),
+      new WebpackMd5Hash(),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: './assets/img', to: './assets/img' },
+        ],
+      }),
+      new CleanWebpackPlugin(),
+    ]
+    : [
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+      }),
+      new ErrorOverlayPlugin(),
+    ],
 });

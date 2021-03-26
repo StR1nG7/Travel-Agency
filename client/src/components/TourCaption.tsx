@@ -44,7 +44,7 @@ const STourPrice = styled.div`
   font-size:0.9375em;
   color:inherit;
   ::before {
-    content:url('/public/img/wallet.png');
+    content:url('/assets/img/wallet.png');
     height:30px;
     margin-right:10px;
   }

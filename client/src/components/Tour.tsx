@@ -39,8 +39,8 @@ const Tour: React.FC<ITour> = (
         <div style={{ position: 'relative' }}>
           <Link to={`/tours/${id}`}>
             <ImageWithWebp
-              srcWebp={`/public/img/${replacedTitle}.webp`}
-              fallback={`/public/img/${replacedTitle}.jpg`}
+              srcWebp={`/assets/img/${replacedTitle}.webp`}
+              fallback={`/assets/img/${replacedTitle}.jpg`}
               alt="Tour"
               style={{ width: '100%' }}
             />

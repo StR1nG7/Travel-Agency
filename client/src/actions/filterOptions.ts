@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux';
 import axios from 'axios';
 import {
- COMMON_TEXT_ERROR, SET_FILTERS_ERROR, SET_FILTER_DATA,
+	API_DEV_HOST, COMMON_TEXT_ERROR, SET_FILTERS_ERROR, SET_FILTER_DATA,
 } from '../constants';
 
 export interface IOption {
@@ -42,7 +42,7 @@ export const getFilterDataThunk = (dispatch: Dispatch<ISetFilterDataAction |
 		ISetFiltersErrorAction>) => {
 	const fragment = '{value, label}';
 
-	return axios.post('http://localhost:4000/graphql', {
+	return axios.post(`${API_DEV_HOST}/graphql`, {
 		query:
 				`query {
 			getFilterData {

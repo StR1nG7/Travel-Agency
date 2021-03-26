@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import axios from 'axios';
-import { SET_SINGLE_TOUR_ERROR, SET_SINGLE_TOUR, COMMON_TEXT_ERROR } from '../constants';
+import {SET_SINGLE_TOUR_ERROR, SET_SINGLE_TOUR, COMMON_TEXT_ERROR, API_DEV_HOST} from '../constants';
 import { ITour } from './toursPage';
 
 export interface ISetTourAction {
@@ -25,7 +25,7 @@ export const setSingleTourError = (err: string): ISetSingleTourErrorAction => ({
 
 export const getTourThunkCreator = (id: string) => (
 	(dispatch: Dispatch<ISetTourAction | ISetSingleTourErrorAction>) => (
-		axios.post('http://localhost:4000/graphql', {
+		axios.post(`${API_DEV_HOST}/graphql`, {
 			query:
 					`query {
 				getTour( id: "${id}" ) {

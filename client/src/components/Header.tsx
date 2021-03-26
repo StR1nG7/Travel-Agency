@@ -27,10 +27,10 @@ const SHeader = styled.div`
   	padding: 90px 0;
   }
   .webp & {
-  	background: url('/public/img/banner.webp') right center no-repeat; 
+  	background: url('../assets/img/banner.webp') right center no-repeat; 
   }
   .no-webp & {
-  	background: url('/public/img/banner.jpg') right center no-repeat;
+  	background: url('../assets/img/banner.jpg') right center no-repeat;
   }
 `;
 
